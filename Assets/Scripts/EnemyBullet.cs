@@ -49,7 +49,7 @@ public class EnemyBullet : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "PlayerShipTag")
+        if ((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag") )
         {
             Destroy(gameObject);
         }

@@ -75,7 +75,7 @@ public class Boss : MonoBehaviour
     {
         // Chọn một vị trí ngẫu nhiên trong khoảng xác định
         float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
+        float randomY = Random.Range(minY / 10, maxY);
 
         // Gán vị trí đích di chuyển mới cho boss
         targetPosition = new Vector2(randomX, randomY);

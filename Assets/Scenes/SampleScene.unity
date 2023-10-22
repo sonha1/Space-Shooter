@@ -411,8 +411,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 738813939
-  m_SortingLayer: 0
+  m_SortingLayerID: -1579385873
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1186071249, guid: 5cb60c3950c7b0040986e0d13d28ca41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -548,6 +548,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 527efc64b225a0142810e1f412084248, type: 3}
+    - target: {fileID: 163735794011528025, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 163735794011528025, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -796683791
+      objectReference: {fileID: 0}
     - target: {fileID: 1001578200180581797, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -768,7 +776,7 @@ GameObject:
   - component: {fileID: 483540340}
   - component: {fileID: 483540339}
   m_Layer: 5
-  m_Name: sanvas
+  m_Name: canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10971,8 +10979,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -796683791
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 277c341b5ea486348ae827cec6ad42fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11050,7 +11058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &934388346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11125,7 +11133,7 @@ Transform:
   m_GameObject: {fileID: 934388345}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.34, y: 1.17, z: 0}
+  m_LocalPosition: {x: 5.42, y: 0.44, z: 0}
   m_LocalScale: {x: 0.254276, y: 0.0941873, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16377,7 +16385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1618585436
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31343,6 +31351,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2ef32e4f003b3c64dbd4e29e6336fb1b, type: 3}
+    - target: {fileID: 163735794011528025, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 163735794011528025, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -796683791
+      objectReference: {fileID: 0}
     - target: {fileID: 1001578200180581797, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -36266,6 +36282,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 972704413}
     m_Modifications:
+    - target: {fileID: 163735794011528025, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 163735794011528025, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -796683791
+      objectReference: {fileID: 0}
     - target: {fileID: 1001578200180581797, guid: b326d4976f584ab458d7eafed5352ea4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.98

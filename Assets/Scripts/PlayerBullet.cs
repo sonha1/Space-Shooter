@@ -29,7 +29,7 @@ public class PlayerBullet : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        if ((col.tag == "EnemyShipTag" ) || ( col.tag == "EnemyShipTag") || (col.tag == "HitBoss") || (col.tag == "AsteroidTag"))
+        if ((col.tag == "EnemyShipTag" ) || ( col.tag == "EnemyBulletTag") || (col.tag == "HitBoss") || (col.tag == "AsteroidTag"))
 
         {
                Destroy(gameObject);
