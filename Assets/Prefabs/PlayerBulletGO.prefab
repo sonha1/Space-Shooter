@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 759076234075952736}
   m_Layer: 0
   m_Name: PlayerBulletGO
-  m_TagString: PlayerShipTag
+  m_TagString: PlayerBulletTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 738813939
+  m_SortingLayerID: -1579385873
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1456106611, guid: 51f48cebeb178304e8da266c2ba060a0, type: 3}

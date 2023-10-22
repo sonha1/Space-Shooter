@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class Boss : MonoBehaviour
     public Sprite normalSprite; // Sprite bình thường
     public Sprite flashSprite; // Sprite nhấp nháy
 
+    public float delaySecond = 1f;
     private void Start()
     {
         scoreUITextGo = GameObject.FindGameObjectWithTag("TextScoreTag");
@@ -68,14 +70,13 @@ public class Boss : MonoBehaviour
             fireTimer = 0f;
         }
 
-
     }
 
     private void SetRandomTargetPosition()
     {
         // Chọn một vị trí ngẫu nhiên trong khoảng xác định
         float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
+        float randomY = Random.Range(minY / 10, maxY);
 
         // Gán vị trí đích di chuyển mới cho boss
         targetPosition = new Vector2(randomX, randomY);
@@ -163,6 +164,7 @@ public class Boss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+      
         if ((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag"))
         {
             health -= damage;
@@ -177,15 +179,49 @@ public class Boss : MonoBehaviour
                 PlayExplosion();
                 scoreUITextGo.GetComponent<GameScore>().Score += score;             
                 Destroy(gameObject);
+                nextMap();
             }
-
-           
         }
+        
     }
 
     void PlayExplosion()
     {
         GameObject explosion = (GameObject)Instantiate(ExplosionGO);
         explosion.transform.position = transform.position;
+    }
+    public void nextMap()
+    {
+        GameObject bossShip = GameObject.Find("Boss");
+        GameObject playerShip = GameObject.Find("PlayerGO");
+        if (bossShip == null)
+        {
+            // UpdateText("Hoàn thành Map 1");
+
+            Vector2 postition = playerShip.transform.position;
+            postition = new Vector2(postition.x, postition.y + 4f * Time.deltaTime);
+            playerShip.transform.position = postition;
+            Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+            if (playerShip.transform.position.y > max.y)
+            {
+                Destroy(playerShip);
+            }
+
+            //playerShip.SetActive(false);
+
+            ModeSelect();
+        }
+    }
+    void ModeSelect()
+    {
+        StartCoroutine(LoadAfterDelay());
+    }
+
+    IEnumerator LoadAfterDelay()
+    {
+
+        yield return new WaitForSeconds(delaySecond);
+
+        SceneManager.LoadScene("Map2");
     }
 }
