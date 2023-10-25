@@ -1,10 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Boss : MonoBehaviour
+public class BossAdvanced : MonoBehaviour
 {
     public GameObject scoreUITextGo;
 
@@ -23,6 +23,7 @@ public class Boss : MonoBehaviour
     public Transform firePoint;  // Vị trí xuất phát của đạn
     public Transform firePoint2;
     public Transform firePoint3;
+    public Transform firePoint4;
 
     public float fireRate = 0.8f;  // Tốc độ bắn đạn (số lần bắn đạn mỗi giây)
     private float fireTimer = 0.2f;  // Đếm thời gian giữa các lần bắn đạn
@@ -32,7 +33,7 @@ public class Boss : MonoBehaviour
     public int lowHealthThreshold = 3000;
     public int damage = 100;
     public int score = 1000;
-    
+
 
     public bool isFlashing = false;    // The boss's effect when it is running out of health.
     public Sprite normalSprite; // Sprite bình thường
@@ -42,7 +43,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         scoreUITextGo = GameObject.FindGameObjectWithTag("TextScoreTag");
-       
+
     }
 
     private void Update()
@@ -99,7 +100,7 @@ public class Boss : MonoBehaviour
             {
                 // Tính toán góc của đạn hiện tại
                 float bulletAngle = startAngle + (angleStep * i);
-               
+
                 // Tạo đạn từ prefab và thiết lập hướng di chuyển
                 GameObject bullet = Instantiate(BossBulletGO, firePoint.position, Quaternion.identity);
                 bullet.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
@@ -110,6 +111,9 @@ public class Boss : MonoBehaviour
                 GameObject bullet3 = Instantiate(BossBulletGO, firePoint3.position, Quaternion.identity);
                 bullet3.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
 
+                GameObject bullet4 = Instantiate(BossBulletGO, firePoint4.position, Quaternion.identity);
+                bullet4.transform.rotation = Quaternion.Euler(0f, 0f, bulletAngle);
+
                 Vector2 direction = playerShip.transform.position - bullet.transform.position;
                 bullet.GetComponent<EnemyBullet>().SetDirection(direction);
 
@@ -118,27 +122,12 @@ public class Boss : MonoBehaviour
 
                 Vector2 direction3 = playerShip.transform.position - bullet3.transform.position;
                 bullet3.GetComponent<EnemyBullet>().SetDirection(direction3);
+
+                Vector2 direction4 = playerShip.transform.position - bullet4.transform.position;
+                bullet4.GetComponent<EnemyBullet>().SetDirection(direction4);
             }
         }
     }
-
-    // Bắn đạn đơn
-    void FireBossBullet()
-    {
-        GameObject playerShip = GameObject.Find("PlayerGO");
-        if (playerShip != null)
-        {
-            GameObject bullet = (GameObject)Instantiate((BossBulletGO));
-
-            bullet.transform.position = transform.position;
-
-            Vector2 direction = playerShip.transform.position - bullet.transform.position;
-
-            bullet.GetComponent<EnemyBullet>().SetDirection(direction);
-        }
-    }
-
-
 
     // The effect of the boss when it is running out of health.
     IEnumerator FlashBoss()
@@ -150,7 +139,7 @@ public class Boss : MonoBehaviour
         float flashDuration = 0.5f; // Thời gian mỗi lần chuyển đổi sprite
 
 
-        while(health > 0)
+        while (health > 0)
         {
             spriteRenderer.sprite = flashSprite;
             yield return new WaitForSeconds(flashDuration);
@@ -164,7 +153,7 @@ public class Boss : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-      
+
         if ((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag"))
         {
             health -= damage;
@@ -177,12 +166,12 @@ public class Boss : MonoBehaviour
             if (health == 0)
             {
                 PlayExplosion();
-                scoreUITextGo.GetComponent<GameScore>().Score += score;             
+                scoreUITextGo.GetComponent<GameScore>().Score += score;
                 Destroy(gameObject);
 
             }
         }
-        
+
     }
 
     void PlayExplosion()

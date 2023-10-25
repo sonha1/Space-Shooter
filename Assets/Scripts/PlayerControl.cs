@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
@@ -18,14 +19,17 @@ public class PlayerControl : MonoBehaviour
 
     public Text LivesUIText;
     private const int MaxLives = 10;
-    private int lives;
+    protected int lives;
     public float speed;
-    private GameObject scoreUITextGo;
-    private float minSpeedFire = 0.05f;
+    protected GameObject scoreUITextGo;
+    protected float minSpeedFire = 0.05f;
     public float speedFire = 0.3f;
     public float upSpeedFireRate = 0.05f;
     public float fireRate = 1f;
-    private int oldScore = 0;
+    protected int oldScore = 0;
+    public int upgradeSocre;
+    // text done map
+    public Text textComponent;
     public void Init()
     {
         lives = MaxLives;
@@ -49,6 +53,23 @@ public class PlayerControl : MonoBehaviour
     
             Vector2 direction = new Vector2(x, y).normalized;
             Move(direction);
+
+            GameObject bossShip = GameObject.Find("Boss");
+
+            int scoreNow = scoreUITextGo.GetComponent<GameScore>().Score;
+            oldScore = scoreNow;
+
+            if (oldScore > upgradeSocre && bossShip == null)
+            {
+                UpdateText("Xong Map 1");
+
+                CancelInvoke("MakeFire");
+
+                Invoke("nextShip", 0.5f);
+
+           
+            StartCoroutine(LoadAfterDelay());
+            }
         }
     
         void Move(Vector2 direction)
@@ -83,33 +104,38 @@ public class PlayerControl : MonoBehaviour
 
          void OnTriggerEnter2D(Collider2D col)
         {
-        if ((col.tag == "EnemyShipTag") || (col.tag == "EnemyBulletTag") || (col.tag == "HitBoss") || (col.tag == "AsteroidTag"))
-        {
-
-            lives--;
-            lives = lives < 0 ? 0 : lives;
-            LivesUIText.text = lives.ToString();
-            if (lives == 0)
+            if ((col.tag == "EnemyShipTag") || (col.tag == "EnemyBulletTag") || (col.tag == "HitBoss") || (col.tag == "AsteroidTag"))
             {
-                PlayExplosion();
-                GameManageGO.GetComponent<GameManage>().SetGameManageState(GameManage.GameManageState.GameOver);
-                gameObject.SetActive(false);
-                CancelInvoke("MakeFire");
-                speedFire = 0.3f;
-            }
+
+                lives--;
+                lives = lives < 0 ? 0 : lives;
+                LivesUIText.text = lives.ToString();
+
+          
+                if (lives == 0)
+                {
+                    PlayExplosion();
+                    GameManageGO.GetComponent<GameManage>().SetGameManageState(GameManage.GameManageState.GameOver);
+                    gameObject.SetActive(false);
+                    CancelInvoke("MakeFire");
+                    speedFire = 0.3f;
+                }
             // Destroy(gameObject);
-        }
-        if ((col.tag == "Resurrection"))
+             }
+             if ((col.tag == "Resurrection"))
              {
                 lives++;
                 LivesUIText.text = lives.ToString();
-            }
+                }
 
-        if ((col.tag == "Kamikaze"))
-        {
-            StartCoroutine(IncreaseFireRateForDuration(5f));
-        }
+                if ((col.tag == "Kamikaze"))
+                {
+                    StartCoroutine(IncreaseFireRateForDuration(5f));
+                }
 
+                // Lưu điểm, mạng
+                PlayerPrefs.SetInt("lives", lives);
+                PlayerPrefs.SetInt("Score", oldScore);
     }
     // Kamikze
     IEnumerator IncreaseFireRateForDuration(float duration)
@@ -151,6 +177,37 @@ public class PlayerControl : MonoBehaviour
                 InvokeRepeating("MakeFire",0f, fireRate * speedFire);
              }
          }
+
+    public void nextShip()
+    {
+
+        GameObject playerShip = GameObject.Find("PlayerGO");
+        Vector2 postition = playerShip.transform.position;
+        postition = new Vector2(postition.x, postition.y + 3f * Time.deltaTime);
+        playerShip.transform.position = postition;
+        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+
+        if (playerShip.transform.position.y > max.y)
+        {
+            playerShip.gameObject.SetActive(false);
+
+            Destroy(playerShip);
+
+        }
+    }
+
+    IEnumerator LoadAfterDelay()
+    {
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene("Map2");
+    }
+    public void UpdateText(string newText)
+    {
+        textComponent.text = newText;
+    }
 }
 
 //

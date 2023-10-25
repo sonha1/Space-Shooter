@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5765449802715651416}
   - component: {fileID: -583708939805122621}
   m_Layer: 0
-  m_Name: asteroid_render_01
+  m_Name: asteroid_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

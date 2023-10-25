@@ -15,6 +15,11 @@ TagManager:
   - EnemySpawnerTag
   - TextScoreTag
   - PlayerBulletTag
+  - Boss2
+  - Boss3
+  - Boss4
+  - Boss5
+  - Boss6
   layers:
   - Default
   - TransparentFX

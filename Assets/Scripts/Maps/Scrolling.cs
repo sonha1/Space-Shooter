@@ -8,7 +8,7 @@ public class Scrolling : MonoBehaviour
 
     private Renderer renderer;
     private Vector2 saveOffset;
-   
+    public int sortingOrder = -10;
     // private Collider2D quadCollider;
 
 
@@ -17,6 +17,9 @@ public class Scrolling : MonoBehaviour
     {
         renderer = GetComponent<MeshRenderer>();
         // quadCollider = GetComponent<Collider2D>();
+        Renderer renderers = GetComponent<Renderer>();
+        renderers.sortingOrder = sortingOrder;
+
 
     }
 
@@ -24,11 +27,11 @@ public class Scrolling : MonoBehaviour
     void Update()
     {
         float x = Mathf.Repeat(Time.time * speed, 1);
-        Vector2  offset = new Vector2 (0, x);
+        Vector2 offset = new Vector2(0, x);
         renderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
     }
 
-     void LateUpdate()
+    void LateUpdate()
     {
         // Lấy tất cả các đối tượng có cùng Sorting Layer và Order in Layer với quad
         SpriteRenderer[] renderers = FindObjectsOfType<SpriteRenderer>();
@@ -46,5 +49,5 @@ public class Scrolling : MonoBehaviour
         // Nếu không có đối tượng nằm trên quad, hiển thị quad
         renderer.enabled = true;
     }
-    
+
 }

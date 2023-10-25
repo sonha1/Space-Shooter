@@ -9,9 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: ba9297d674b3e244e8954ba5c7cf41a7
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Map1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Map2.unity
     guid: 955824489cfaddc499dcc20048a7d52b
+  - enabled: 1
+    path: Assets/Scenes/Map4.unity
+    guid: e368126e9a6ed4249957c69a3aaff816
+  - enabled: 1
+    path: Assets/Scenes/Map3.unity
+    guid: 793c7248a0159d545b2f8ffda968582c
+  - enabled: 1
+    path: Assets/Scenes/Map5.unity
+    guid: 1c4d1e1db36a71f4b858429a870440a6
+  - enabled: 1
+    path: Assets/Scenes/Map6.unity
+    guid: 1e7887b95cc78ea42811a18a539aca59
   m_configObjects: {}
