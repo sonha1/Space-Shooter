@@ -543,7 +543,10 @@ MonoBehaviour:
   speedFire: 0.3
   upSpeedFireRate: 0.02
   fireRate: 1
+  upgradeSocre: 1000
   textComponent: {fileID: 195706981}
+  Map: 1
+  nextMap: 2
 --- !u!50 &360648843
 Rigidbody2D:
   serializedVersion: 4
@@ -1215,57 +1218,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629530078}
   m_CullTransparentMesh: 1
---- !u!1 &710537143
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 710537145}
-  - component: {fileID: 710537144}
-  m_Layer: 0
-  m_Name: AsteroidPawnerGO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &710537144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710537143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c319fc96f3a2495479d0577b8e1326c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AsteroidGO01: {fileID: 2257702763733428892, guid: 6d538aedd0d8aa14a84150729c58683d, type: 3}
-  AsteroidGO02: {fileID: 4010475240742934745, guid: 7f865b88c996dc94db1204462491144f, type: 3}
-  AsteroidGO03: {fileID: 6535490254437453250, guid: accaa2e87edffc44b9f974afaf5b2b31, type: 3}
-  itemResurrection: {fileID: 1214500710673891498, guid: 78bee6abbec53e643ba72b0574fa8cd9, type: 3}
-  ItemsCannon: {fileID: 171297848455464260, guid: 0c53ca4a897462442ade1d0288092251, type: 3}
-  ItemsKamikaze: {fileID: 1599841929454457212, guid: 6f48f6e3e6c5f8044b0e01040cb3d319, type: 3}
-  maxSpawnRateInSeconds: 5
---- !u!4 &710537145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 710537143}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8785837, y: 0.12813956, z: -0.0012864722}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &748996119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,6 +1711,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358227320}
   m_CullTransparentMesh: 1
+--- !u!1 &1510322150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1510322152}
+  - component: {fileID: 1510322151}
+  m_Layer: 0
+  m_Name: ItemsPawnerGO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1510322151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510322150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99742f9542284574098801010f234435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemResurrection: {fileID: 0}
+  ItemsCannon: {fileID: 0}
+  ItemsKamikaze: {fileID: 0}
+  maxSpawnRateInSeconds: 5
+--- !u!4 &1510322152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510322150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8128532, y: -0.038224965, z: -0.045474567}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1542781521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,7 +1775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1542781522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2129,5 +2129,5 @@ SceneRoots:
   - {fileID: 49077877}
   - {fileID: 1542781523}
   - {fileID: 972704413}
-  - {fileID: 710537145}
   - {fileID: 906629580}
+  - {fileID: 1510322152}

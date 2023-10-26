@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidControl : MonoBehaviour
+public class AsteroidControl2 : MonoBehaviour
 {
-
-    
     public float speed;
     public GameObject ExplosionAsteroid;
     // Start is called before the first frame update
@@ -17,15 +15,12 @@ public class AsteroidControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Vector2 postition = transform.position;
-        postition = new Vector2(postition.x, postition.y - speed * Time.deltaTime);
-        transform.position = postition;
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-        if (transform.position.y < min.y)
-        {
-            Destroy(gameObject);
-        }
+        this.Rotating();
+    }
+    protected void Rotating()
+    {
+        Vector3 eulers = new Vector3(0, 0, 1);
+        transform.parent.Rotate(eulers * this.speed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -33,7 +28,7 @@ public class AsteroidControl : MonoBehaviour
         if ((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag"))
         {
             PlayExplosion();
-           
+
             Destroy(gameObject);
         }
     }

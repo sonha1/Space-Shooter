@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    // Use this for initialization
+    
     float speed;
+    
+
     void Start ()
     {
         speed = 4f;
@@ -27,11 +29,12 @@ public class PlayerBullet : MonoBehaviour
     }
     
     
-    void OnTriggerEnter2D(Collider2D col)
+    protected virtual void OnTriggerEnter2D(Collider2D col)
     {
         if ((col.tag == "EnemyShipTag" ) || ( col.tag == "EnemyBulletTag") || (col.tag == "HitBoss") || (col.tag == "AsteroidTag"))
 
         {
+            //this.Send(col.transform);
                Destroy(gameObject);
         }
     }

@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject bulletPosition02;
     public GameObject ExplosionGO;
 
+   
     public Text LivesUIText;
     private const int MaxLives = 10;
     protected int lives;
@@ -30,6 +31,9 @@ public class PlayerControl : MonoBehaviour
     public int upgradeSocre;
     // text done map
     public Text textComponent;
+    public int Map;
+    public int nextMap;
+
     public void Init()
     {
         lives = MaxLives;
@@ -54,14 +58,14 @@ public class PlayerControl : MonoBehaviour
             Vector2 direction = new Vector2(x, y).normalized;
             Move(direction);
 
+            // chuyển map
             GameObject bossShip = GameObject.Find("Boss");
-
             int scoreNow = scoreUITextGo.GetComponent<GameScore>().Score;
             oldScore = scoreNow;
 
             if (oldScore > upgradeSocre && bossShip == null)
             {
-                UpdateText("Xong Map 1");
+                UpdateText("Xong Map " + "" + Map);
 
                 CancelInvoke("MakeFire");
 
@@ -202,7 +206,7 @@ public class PlayerControl : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        SceneManager.LoadScene("Map2");
+        SceneManager.LoadScene("Map" + "" + nextMap);
     }
     public void UpdateText(string newText)
     {

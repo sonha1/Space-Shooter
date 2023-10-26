@@ -2,44 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class itemsPanwerGO : MonoBehaviour
+public class itemsPanwer : MonoBehaviour
 {
-
-    public GameObject AsteroidGO01;
-  
-
     public GameObject itemResurrection;
     public GameObject ItemsCannon;
     public GameObject ItemsKamikaze;
+
+    public float RateResurrection;
+    public float RateCannon;
+    public float RateKamikaze;
+
     public float maxSpawnRateInSeconds = 5f;
-    // public GameObject anEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("SpawnAsteroid", 10f);
-        Invoke("SpawnResurrection", 25f);
-        Invoke("SpawnKamikaze", 15f);
-        //
+        Invoke("SpawnCannon", 20f);
+        Invoke("SpawnResurrection", 35f);
+        Invoke("SpawnKamikaze", 45f);
+
         InvokeRepeating("IncreaseSpawnRate", 0f, 5f);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    void SpawnAsteroid()
-    {
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        GameObject anAsteroid = (GameObject)Instantiate((AsteroidGO01));
-        anAsteroid.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
-
-        ScheduleNextAsteroidSpawn();
-    }
 
     void SpawnResurrection()
     {
@@ -60,7 +51,7 @@ public class itemsPanwerGO : MonoBehaviour
         GameObject anCannon = (GameObject)Instantiate((ItemsCannon));
         anCannon.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
 
-        ScheduleNextAsteroidSpawn();
+        ScheduleNextCannonSpawn();
     }
 
     void SpawnKamikaze()
@@ -73,29 +64,10 @@ public class itemsPanwerGO : MonoBehaviour
 
         ScheduleNextKamikazeSpawn();
     }
-
-    public void ScheduleNextAsteroidSpawn()
-    {
-
-        maxSpawnRateInSeconds = 10f;
-
-        float spawnInNSeconds;
-        if (maxSpawnRateInSeconds > 1f)
-        {
-            spawnInNSeconds = Random.Range(1f, maxSpawnRateInSeconds);
-            maxSpawnRateInSeconds--;
-        }
-        else
-        {
-            spawnInNSeconds = 1f;
-        }
-        Invoke("SpawnAsteroid", spawnInNSeconds);
-    }
-
     public void ScheduleNextResurrectionSpawn()
     {
 
-        maxSpawnRateInSeconds = 15f;
+        maxSpawnRateInSeconds = RateResurrection;
 
         float spawnInNSeconds;
         if (maxSpawnRateInSeconds > 1f)
@@ -114,7 +86,7 @@ public class itemsPanwerGO : MonoBehaviour
     public void ScheduleNextKamikazeSpawn()
     {
 
-        maxSpawnRateInSeconds = 5f;
+        maxSpawnRateInSeconds = RateKamikaze;
 
         float spawnInNSeconds;
         if (maxSpawnRateInSeconds > 1f)
@@ -127,6 +99,24 @@ public class itemsPanwerGO : MonoBehaviour
             spawnInNSeconds = 1f;
         }
         Invoke("SpawnKamikaze", spawnInNSeconds);
+    }
+
+    public void ScheduleNextCannonSpawn()
+    {
+
+        maxSpawnRateInSeconds = RateCannon;
+
+        float spawnInNSeconds;
+        if (maxSpawnRateInSeconds > 1f)
+        {
+            spawnInNSeconds = Random.Range(1f, maxSpawnRateInSeconds);
+            maxSpawnRateInSeconds--;
+        }
+        else
+        {
+            spawnInNSeconds = 1f;
+        }
+        Invoke("SpawnCannon", spawnInNSeconds);
     }
 
     void IncreaseSpawnRate()
@@ -144,9 +134,5 @@ public class itemsPanwerGO : MonoBehaviour
     }
 
 
-    public void UnScheduleNextAsteroidSpawn()
-    {
-        CancelInvoke("SpawnAsteroid");
-        CancelInvoke("IncreaseSpawnRate");
-    }
+
 }

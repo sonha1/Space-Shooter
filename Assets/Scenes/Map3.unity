@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed9bce745aacf245b12760f18eec847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.05
   sortingOrder: -10
 --- !u!64 &238663033
 MeshCollider:
@@ -703,7 +703,10 @@ MonoBehaviour:
   speedFire: 0.3
   upSpeedFireRate: 0.02
   fireRate: 1
+  upgradeSocre: 3000
   textComponent: {fileID: 1700503006}
+  Map: 3
+  nextMap: 4
 --- !u!95 &306579125
 Animator:
   serializedVersion: 5
@@ -1114,6 +1117,103 @@ RectTransform:
   m_AnchoredPosition: {x: 229.8, y: -26}
   m_SizeDelta: {x: 136.0673, y: 49.3564}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1018930797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018930799}
+  - component: {fileID: 1018930798}
+  m_Layer: 0
+  m_Name: itemsPanwerGO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1018930798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018930797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99742f9542284574098801010f234435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemResurrection: {fileID: 1214500710673891498, guid: 78bee6abbec53e643ba72b0574fa8cd9, type: 3}
+  ItemsCannon: {fileID: 171297848455464260, guid: 0c53ca4a897462442ade1d0288092251, type: 3}
+  ItemsKamikaze: {fileID: 1599841929454457212, guid: 6f48f6e3e6c5f8044b0e01040cb3d319, type: 3}
+  RateResurrection: 40
+  RateCannon: 40
+  RateKamikaze: 40
+  maxSpawnRateInSeconds: 5
+--- !u!4 &1018930799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018930797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.18577974, y: 0.49544558, z: -0.07459171}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1216224075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1216224077}
+  - component: {fileID: 1216224076}
+  m_Layer: 0
+  m_Name: StartGeneratorGO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1216224076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216224075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bab8e30c89548f4f90986ea8d69be7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartGO: {fileID: 2319765354225686493, guid: b80c02cee974f2e4d922de4964171954, type: 3}
+  MaxStarts: 40
+--- !u!4 &1216224077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216224075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -328.764, y: 911.0248, z: -7.9862566}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1382670238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1246,7 @@ MonoBehaviour:
   EnemyGO: {fileID: 4460706927892818613, guid: 39d3c1e42c24c754e970d813d2888594, type: 3}
   maxSpawnRateInSeconds: 5
   anEnemy: {fileID: 0}
-  Boss: {fileID: 5462783469930561622, guid: a6cd15cc9a1cfda48a3cb6bc60e3bc2a, type: 3}
+  Boss: {fileID: 6362582248089090690, guid: 562546def35f6d14299c0d11cf22dd3e, type: 3}
 --- !u!4 &1382670240
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,9 +1457,9 @@ MonoBehaviour:
   AsteroidGO01: {fileID: 2257702763733428892, guid: 6d538aedd0d8aa14a84150729c58683d, type: 3}
   AsteroidGO02: {fileID: 4010475240742934745, guid: 7f865b88c996dc94db1204462491144f, type: 3}
   AsteroidGO03: {fileID: 6535490254437453250, guid: accaa2e87edffc44b9f974afaf5b2b31, type: 3}
-  itemResurrection: {fileID: 1214500710673891498, guid: 78bee6abbec53e643ba72b0574fa8cd9, type: 3}
-  ItemsCannon: {fileID: 171297848455464260, guid: 0c53ca4a897462442ade1d0288092251, type: 3}
-  ItemsKamikaze: {fileID: 1599841929454457212, guid: 6f48f6e3e6c5f8044b0e01040cb3d319, type: 3}
+  RateAsteroid01: 30
+  RateAsteroid02: 30
+  RateAsteroid03: 30
   maxSpawnRateInSeconds: 5
 --- !u!4 &1529830446
 Transform:
@@ -1763,3 +1863,5 @@ SceneRoots:
   - {fileID: 306579127}
   - {fileID: 1382670240}
   - {fileID: 1468524014}
+  - {fileID: 1216224077}
+  - {fileID: 1018930799}

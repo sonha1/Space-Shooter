@@ -9,9 +9,9 @@ public class AsteroidSpawnerControl : MonoBehaviour
     public GameObject AsteroidGO02;
     public GameObject AsteroidGO03;
 
-    public GameObject itemResurrection;
-    public GameObject ItemsCannon;
-    public GameObject ItemsKamikaze;
+    public float RateAsteroid01;
+    public float RateAsteroid02;
+    public float RateAsteroid03;
     public float maxSpawnRateInSeconds = 5f;
    // public GameObject anEnemy;
 
@@ -19,8 +19,6 @@ public class AsteroidSpawnerControl : MonoBehaviour
     void Start()
     {
         Invoke("SpawnAsteroid", 10f);
-            Invoke("SpawnResurrection", 25f);
-        Invoke("SpawnKamikaze", 15f);
         Invoke("SpawnAsteroid02", 20f);
         Invoke("SpawnAsteroid03", 30f);
         //
@@ -67,43 +65,10 @@ public class AsteroidSpawnerControl : MonoBehaviour
     }
 
 
-    void SpawnResurrection()
-    {
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        GameObject anResurrection = (GameObject)Instantiate((itemResurrection));
-        anResurrection.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
-
-        ScheduleNextResurrectionSpawn();
-    }
-
-    void SpawnCannon()
-    {
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        GameObject anCannon = (GameObject)Instantiate((ItemsCannon));
-        anCannon.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
-
-        ScheduleNextAsteroidSpawn();
-    }
-
-    void SpawnKamikaze()
-    {
-        Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-        Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        GameObject anKamikaze = (GameObject)Instantiate((ItemsKamikaze));
-        anKamikaze.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
-
-        ScheduleNextKamikazeSpawn();
-    }
-
     public void ScheduleNextAsteroidSpawn()
     {
 
-        maxSpawnRateInSeconds = 30f;
+        maxSpawnRateInSeconds = RateAsteroid01;
 
         float spawnInNSeconds;
         if (maxSpawnRateInSeconds > 1f)
@@ -121,7 +86,7 @@ public class AsteroidSpawnerControl : MonoBehaviour
     public void ScheduleNextAsteroidSpawn02()
     {
 
-        maxSpawnRateInSeconds = 30f;
+        maxSpawnRateInSeconds = RateAsteroid01;
 
         float spawnInNSeconds;
         if (maxSpawnRateInSeconds > 1f)
@@ -139,7 +104,7 @@ public class AsteroidSpawnerControl : MonoBehaviour
     public void ScheduleNextAsteroidSpawn03()
     {
 
-        maxSpawnRateInSeconds = 30f;
+        maxSpawnRateInSeconds = RateAsteroid01;
 
         float spawnInNSeconds;
         if (maxSpawnRateInSeconds > 1f)
@@ -152,42 +117,6 @@ public class AsteroidSpawnerControl : MonoBehaviour
             spawnInNSeconds = 1f;
         }
         Invoke("SpawnAsteroid03", spawnInNSeconds);
-    }
-    public void ScheduleNextResurrectionSpawn()
-    {
-
-        maxSpawnRateInSeconds = 15f;
-
-        float spawnInNSeconds;
-        if (maxSpawnRateInSeconds > 1f)
-        {
-            spawnInNSeconds = Random.Range(1f, maxSpawnRateInSeconds);
-            maxSpawnRateInSeconds--;
-        }
-        else
-        {
-            spawnInNSeconds = 1f;
-        }
-        Invoke("SpawnResurrection", spawnInNSeconds);
-    }
-
-
-    public void ScheduleNextKamikazeSpawn()
-    {
-
-        maxSpawnRateInSeconds = 5f;
-
-        float spawnInNSeconds;
-        if (maxSpawnRateInSeconds > 1f)
-        {
-            spawnInNSeconds = Random.Range(1f, maxSpawnRateInSeconds);
-            maxSpawnRateInSeconds--;
-        }
-        else
-        {
-            spawnInNSeconds = 1f;
-        }
-        Invoke("SpawnKamikaze", spawnInNSeconds);
     }
 
     void IncreaseSpawnRate()
