@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5839470478928476436}
   m_Layer: 0
   m_Name: Boss2
-  m_TagString: Boss2
+  m_TagString: HitBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,8 +169,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1579385873
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c32b17e939e75184dae4996e3ba2c1a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -281,8 +281,8 @@ MonoBehaviour:
   fireRate: 0.8
   bulletCount: 1
   spreadAngle: 50
-  health: 2000
-  lowHealthThreshold: 1000
+  health: 20000
+  lowHealthThreshold: 5000
   damage: 100
   score: 2000
   isFlashing: 0

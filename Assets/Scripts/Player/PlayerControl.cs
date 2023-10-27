@@ -99,6 +99,7 @@ public class PlayerControl : MonoBehaviour
 
         void MakeFire()
         {
+            GetComponent<AudioSource>().Play();
             GameObject bullet01 = (GameObject)Instantiate(PlayerBulletGO);
             bullet01.transform.position = bulletPosition01.transform.position;
                 

@@ -34,11 +34,12 @@ public class GameManage : MonoBehaviour
                 GameOverGO.SetActive(false);
                 playButton.SetActive(true);
                 enemySpawner.GetComponent<EnemySpawnerControl>().UnScheduleNextEnemySpawn();
-              
+               
                 break;
             case GameManageState.GamePlay:
                 enemySpawner.GetComponent<EnemySpawnerControl>().unActiveBoss();
-                scoreUITextGO.GetComponent<GameScore>().Score = 0;
+                int ts = Boss.scoresss;
+                scoreUITextGO.GetComponent<GameScore>().Score = ts;
                 playButton.SetActive(false);
                 GameOverGO.SetActive(false);
                 playerShip.GetComponent<PlayerControl>().Init();
