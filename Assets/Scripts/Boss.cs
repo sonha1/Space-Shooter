@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Boss : MonoBehaviour
 {
     public GameObject scoreUITextGo;
-
+    public static int scoresss;
     public float minX = -5f;  // Giới hạn bên trái
     public float maxX = 5f;  // Giới hạn bên phải
     public float minY = -2f;  // Giới hạn dưới
@@ -177,9 +177,9 @@ public class Boss : MonoBehaviour
             if (health == 0)
             {
                 PlayExplosion();
-                scoreUITextGo.GetComponent<GameScore>().Score += score;             
+                scoreUITextGo.GetComponent<GameScore>().Score += score;
+                scoresss = scoreUITextGo.GetComponent<GameScore>().Score;
                 Destroy(gameObject);
-
             }
         }
         

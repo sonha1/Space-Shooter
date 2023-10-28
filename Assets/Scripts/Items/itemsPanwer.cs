@@ -36,9 +36,11 @@ public class itemsPanwer : MonoBehaviour
     {
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        GameObject anResurrection = (GameObject)Instantiate((itemResurrection));
-        anResurrection.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+        if (itemResurrection)
+        {
+            GameObject anResurrection = (GameObject)Instantiate((itemResurrection));
+            anResurrection.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+        }
 
         ScheduleNextResurrectionSpawn();
     }
@@ -48,8 +50,10 @@ public class itemsPanwer : MonoBehaviour
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
-        GameObject anCannon = (GameObject)Instantiate((ItemsCannon));
-        anCannon.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+        if(ItemsCannon){
+            GameObject anCannon = (GameObject)Instantiate((ItemsCannon));
+            anCannon.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+        }
 
         ScheduleNextCannonSpawn();
     }
@@ -59,8 +63,10 @@ public class itemsPanwer : MonoBehaviour
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
-        GameObject anKamikaze = (GameObject)Instantiate((ItemsKamikaze));
-        anKamikaze.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+        if(ItemsKamikaze){
+            GameObject anKamikaze = (GameObject)Instantiate((ItemsKamikaze));
+            anKamikaze.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
+        }
 
         ScheduleNextKamikazeSpawn();
     }
