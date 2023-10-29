@@ -542,9 +542,8 @@ MonoBehaviour:
   LivesUIText: {fileID: 568949525}
   speed: 3
   speedFire: 0.3
-  upSpeedFireRate: 0.02
   fireRate: 1
-  upgradeSocre: 1000
+  upgradeSocre: 3000
   textComponent: {fileID: 195706981}
   Map: 1
   nextMap: 2
@@ -1272,7 +1271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreTextUI: {fileID: 0}
   score: 0
-  limitPointHaveBoss: 500
+  limitPointHaveBoss: 2000
 --- !u!114 &629530081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,10 +1967,10 @@ MonoBehaviour:
   itemResurrection: {fileID: 1214500710673891498, guid: 78bee6abbec53e643ba72b0574fa8cd9, type: 3}
   ItemsCannon: {fileID: 171297848455464260, guid: 0c53ca4a897462442ade1d0288092251, type: 3}
   ItemsKamikaze: {fileID: 1599841929454457212, guid: 6f48f6e3e6c5f8044b0e01040cb3d319, type: 3}
-  RateResurrection: 1
-  RateCannon: 1
-  RateKamikaze: 1
-  maxSpawnRateInSeconds: 1
+  RateResurrection: 40
+  RateCannon: 40
+  RateKamikaze: 40
+  maxSpawnRateInSeconds: 5
 --- !u!4 &1510322152
 Transform:
   m_ObjectHideFlags: 0

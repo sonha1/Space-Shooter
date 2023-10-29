@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map6.unity
     guid: 1e7887b95cc78ea42811a18a539aca59
+  - enabled: 1
+    path: Assets/Scenes/HuongDan.unity
+    guid: 7bafbd1128b1c034c93575ab01cf6b75
   m_configObjects: {}

@@ -282,7 +282,7 @@ MonoBehaviour:
   bulletCount: 1
   spreadAngle: 50
   health: 20000
-  lowHealthThreshold: 5000
+  lowHealthThreshold: 3000
   damage: 100
   score: 2000
   isFlashing: 0

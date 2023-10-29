@@ -209,8 +209,8 @@ MonoBehaviour:
   fireRate: 0.8
   bulletCount: 1
   spreadAngle: 50
-  health: 2000
-  lowHealthThreshold: 1000
+  health: 30000
+  lowHealthThreshold: 2000
   damage: 100
   score: 3000
   isFlashing: 0

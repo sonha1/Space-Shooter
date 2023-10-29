@@ -17,9 +17,9 @@ public class itemsPanwer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("SpawnCannon", 20f);
+        Invoke("SpawnCannon", 45f);
         Invoke("SpawnResurrection", 35f);
-        Invoke("SpawnKamikaze", 45f);
+        Invoke("SpawnKamikaze", 30f);
 
         InvokeRepeating("IncreaseSpawnRate", 0f, 5f);
 

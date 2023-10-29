@@ -190,10 +190,10 @@ MonoBehaviour:
   fireRate: 0.8
   bulletCount: 1
   spreadAngle: 50
-  health: 2000
-  lowHealthThreshold: 1000
+  health: 100000
+  lowHealthThreshold: 2000
   damage: 100
-  score: 15000
+  score: 6000
   isFlashing: 0
   normalSprite: {fileID: 21300000, guid: ae3588cd2a2939b4ea1e4f0dcf185003, type: 3}
   flashSprite: {fileID: 21300000, guid: af2cc961fbb1dac4cb5cfb08108d5411, type: 3}

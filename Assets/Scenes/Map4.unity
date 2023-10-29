@@ -394,10 +394,10 @@ MonoBehaviour:
   AsteroidGO01: {fileID: 2257702763733428892, guid: 6d538aedd0d8aa14a84150729c58683d, type: 3}
   AsteroidGO02: {fileID: 4010475240742934745, guid: 7f865b88c996dc94db1204462491144f, type: 3}
   AsteroidGO03: {fileID: 6535490254437453250, guid: accaa2e87edffc44b9f974afaf5b2b31, type: 3}
-  RateAsteroid01: 30
-  RateAsteroid02: 15
-  RateAsteroid03: 15
-  maxSpawnRateInSeconds: 5
+  RateAsteroid01: 2
+  RateAsteroid02: 2
+  RateAsteroid03: 2
+  maxSpawnRateInSeconds: 4
 --- !u!4 &401757683
 Transform:
   m_ObjectHideFlags: 0
@@ -771,9 +771,8 @@ MonoBehaviour:
   LivesUIText: {fileID: 1839640286}
   speed: 3
   speedFire: 0.3
-  upSpeedFireRate: 0.02
   fireRate: 1
-  upgradeSocre: 5000
+  upgradeSocre: 24000
   textComponent: {fileID: 697360137}
   Map: 4
   nextMap: 5
@@ -1708,7 +1707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreTextUI: {fileID: 0}
   score: 0
-  limitPointHaveBoss: 500
+  limitPointHaveBoss: 21000
 --- !u!114 &1762318444
 MonoBehaviour:
   m_ObjectHideFlags: 0

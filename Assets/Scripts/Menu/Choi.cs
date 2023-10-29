@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,5 +10,20 @@ public class Choi : MonoBehaviour
     public void ThoatMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void HuongDan()
+    {
+        SceneManager.LoadScene(7);
+    }
+
+    public void CaiDat()
+    {
+        SceneManager.LoadScene(8);
+    }
+
+    public void OnQuitButtonClicked()
+    {
+        Application.Quit();
     }
 }

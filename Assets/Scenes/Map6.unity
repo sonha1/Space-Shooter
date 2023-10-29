@@ -289,7 +289,7 @@ MonoBehaviour:
   speedFire: 0.3
   upSpeedFireRate: 0.02
   fireRate: 1
-  upgradeSocre: 15000
+  upgradeSocre: 50000
   textComponent: {fileID: 1349023566}
   Map: 6
   nextMap: 1
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreTextUI: {fileID: 0}
   score: 0
-  limitPointHaveBoss: 500
+  limitPointHaveBoss: 45000
 --- !u!114 &661601632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1815,7 +1815,7 @@ MonoBehaviour:
   RateAsteroid01: 10
   RateAsteroid02: 10
   RateAsteroid03: 10
-  maxSpawnRateInSeconds: 5
+  maxSpawnRateInSeconds: 2
 --- !u!4 &1868565206
 Transform:
   m_ObjectHideFlags: 0

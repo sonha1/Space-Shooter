@@ -19,13 +19,11 @@ public class PlayerControl : MonoBehaviour
 
    
     public Text LivesUIText;
-    private const int MaxLives = 10;
+    private const int MaxLives = 3;
     protected int lives;
     public float speed;
     protected GameObject scoreUITextGo;
-    protected float minSpeedFire = 0.05f;
     public float speedFire = 0.3f;
-    public float upSpeedFireRate = 0.05f;
     public float fireRate = 1f;
     protected int oldScore = 0;
     public int upgradeSocre;
@@ -78,7 +76,6 @@ public class PlayerControl : MonoBehaviour
     
         void Move(Vector2 direction)
         {
-            UpdateRateMakeFire();
             Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
             Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
             
@@ -112,7 +109,7 @@ public class PlayerControl : MonoBehaviour
             if ((col.tag == "EnemyShipTag") || (col.tag == "EnemyBulletTag") || (col.tag == "HitBoss") || (col.tag == "AsteroidTag"))
             {
 
-                lives--;
+              //  lives--;
                 lives = lives < 0 ? 0 : lives;
                 LivesUIText.text = lives.ToString();
 
@@ -134,53 +131,33 @@ public class PlayerControl : MonoBehaviour
                 }
 
                 if ((col.tag == "Kamikaze"))
-                {
-                    StartCoroutine(IncreaseFireRateForDuration(5f));
+                { 
+                     StartCoroutine(IncreaseFireRateForDuration(6f));
+
                 }
+                   
 
                 // Lưu điểm, mạng
                 PlayerPrefs.SetInt("lives", lives);
                 PlayerPrefs.SetInt("Score", oldScore);
+           }
+        // Kamikze
+        IEnumerator IncreaseFireRateForDuration(float duration)
+        {
+            // Kích hoạt tăng tốc độ ra đạn
+            InvokeRepeating("MakeFire", 0f, 0.1f);
+
+            // Đợi trong khoảng thời gian đã cho
+            yield return new WaitForSeconds(duration);
+            CancelInvoke("MakeFire");
+            InvokeRepeating("MakeFire", 0f, 0.3f);
     }
-    // Kamikze
-    IEnumerator IncreaseFireRateForDuration(float duration)
-    {
-        float fireRateNew = fireRate * 15f;
-        float speedFireNew = speedFire * 15f;
-        // Kích hoạt tăng tốc độ ra đạn
-        InvokeRepeating("MakeFire", 0f, fireRateNew * speedFireNew);
 
-        // Đợi trong khoảng thời gian đã cho
-        yield return new WaitForSeconds(duration);
 
-        InvokeRepeating("MakeFire", 0f, fireRate * speedFire);
-
-    }
     void PlayExplosion()
          {
              GameObject explosion = (GameObject)Instantiate(ExplosionGO);
              explosion.transform.position = transform.position;
-         }
-
-         void UpdateRateMakeFire()
-         {
-             int scoreNow = scoreUITextGo.GetComponent<GameScore>().Score;
-             if (scoreNow > 0 && scoreNow % 100 == 0 && scoreNow != oldScore)
-             {
-                 oldScore = scoreNow;
-                 speedFire -= upSpeedFireRate;
-                 SetRateMakeFire();
-             }
-         }
-
-          void SetRateMakeFire()
-         {
-             if (speedFire > minSpeedFire)
-             {
-                 Trace.WriteLine(speedFire);
-                 CancelInvoke("MakeFire");
-                InvokeRepeating("MakeFire",0f, fireRate * speedFire);
-             }
          }
 
     public void nextShip()

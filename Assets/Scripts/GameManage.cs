@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -68,5 +69,10 @@ public class GameManage : MonoBehaviour
     public void ChangeToOpeningState()
     {
         SetGameManageState(GameManageState.Opening);
+    }
+
+    internal static void QuitGame()
+    {
+        throw new NotImplementedException();
     }
 }
