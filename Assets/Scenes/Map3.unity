@@ -579,9 +579,10 @@ MonoBehaviour:
   bulletPosition02: {fileID: 2002824941}
   ExplosionGO: {fileID: 2749613118304604362, guid: 75d2f61e701e1504eb139fc9ac114d83, type: 3}
   LivesUIText: {fileID: 1516536005}
+  MaxLives: 5
+  lives: 0
   speed: 3
-  speedFire: 0.3
-  upSpeedFireRate: 0.02
+  speedFire: 0.36
   fireRate: 1
   upgradeSocre: 16000
   textComponent: {fileID: 1700503006}
@@ -1220,8 +1221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyGO: {fileID: 4460706927892818613, guid: 39d3c1e42c24c754e970d813d2888594, type: 3}
-  maxSpawnRateInSeconds: 5
+  maxSpawnRateInSeconds: 4
   anEnemy: {fileID: 0}
+  defaultMaxSpawnRateInSeconds: 0
   Boss: {fileID: 6362582248089090690, guid: 562546def35f6d14299c0d11cf22dd3e, type: 3}
 --- !u!4 &1382670240
 Transform:

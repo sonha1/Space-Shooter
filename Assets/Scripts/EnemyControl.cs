@@ -12,7 +12,10 @@ public class EnemyControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 2f;
+        if (speed == 0)
+        {
+            speed = 2;
+        }
         scoreUITextGo = GameObject.FindGameObjectWithTag("TextScoreTag");
     }
 

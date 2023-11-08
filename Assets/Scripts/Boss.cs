@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Boss : MonoBehaviour
 {
     public GameObject scoreUITextGo;
+    public GameObject liveUITextGo;
     public static int scoresss;
     public float minX = -5f;  // Giới hạn bên trái
     public float maxX = 5f;  // Giới hạn bên phải
@@ -42,7 +43,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         scoreUITextGo = GameObject.FindGameObjectWithTag("TextScoreTag");
-       
+        liveUITextGo = GameObject.FindGameObjectWithTag("LiveTextTag");
     }
 
     private void Update()
@@ -179,6 +180,7 @@ public class Boss : MonoBehaviour
                 PlayExplosion();
                 scoreUITextGo.GetComponent<GameScore>().Score += score;
                 scoresss = scoreUITextGo.GetComponent<GameScore>().Score;
+                // livessss = liveUITextGo.GetComponent<G>().lives;
                 Destroy(gameObject);
             }
         }
