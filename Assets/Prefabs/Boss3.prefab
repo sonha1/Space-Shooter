@@ -122,8 +122,8 @@ Transform:
   m_GameObject: {fileID: 6362582248089090690}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4138, y: 1.6353, z: 0}
-  m_LocalScale: {x: 0.75148064, y: 0.71408105, z: 1}
+  m_LocalPosition: {x: -3.3618, y: 1.2934, z: 0}
+  m_LocalScale: {x: 0.6816681, y: 0.5418447, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3678201270787145915}
@@ -211,7 +211,6 @@ MonoBehaviour:
   spreadAngle: 50
   health: 30000
   lowHealthThreshold: 2000
-  damage: 100
   score: 3000
   isFlashing: 0
   normalSprite: {fileID: 21300000, guid: 8c14ef36eb518bc4f896975a38f1a7e0, type: 3}

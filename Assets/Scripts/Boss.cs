@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
 
     private Vector2 targetPosition;  // Vị trí đích di chuyển của boss
 
-    public GameObject ExplosionGO;
+  public GameObject ExplosionGO;
 
     public GameObject BossBulletGO;
 
@@ -30,7 +30,7 @@ public class Boss : MonoBehaviour
     public float spreadAngle = 50f;  // Góc phân tán của chùm đạn
     public int health = 12000;
     public int lowHealthThreshold = 3000;
-    public int damage = 100;
+    //public int damage = 100;
     public int score = 1000;
     
 
@@ -167,7 +167,7 @@ public class Boss : MonoBehaviour
       
         if ((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag"))
         {
-            health -= damage;
+            health -= PlayerControl.damage;
 
             if (health <= lowHealthThreshold)
             {

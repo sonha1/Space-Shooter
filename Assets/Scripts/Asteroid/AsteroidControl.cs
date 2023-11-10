@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class AsteroidControl : MonoBehaviour
 {
 
     
-    public float speed;
+    public float speedAsteroid;
     public GameObject ExplosionAsteroid;
+
+    public int health;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +22,7 @@ public class AsteroidControl : MonoBehaviour
     {
 
         Vector2 postition = transform.position;
-        postition = new Vector2(postition.x, postition.y - speed * Time.deltaTime);
+        postition = new Vector2(postition.x, postition.y - speedAsteroid * Time.deltaTime);
         transform.position = postition;
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         if (transform.position.y < min.y)
@@ -31,12 +35,16 @@ public class AsteroidControl : MonoBehaviour
     {
         if ((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag"))
         {
-            //if(HP == 0)
-            //{
-                 PlayExplosion();
+            health -= PlayerControl.damage;
+
+            if (health == 0)
+            {
+                PlayExplosion();
+
+                Destroy(gameObject);
+            }
            
-             Destroy(gameObject);
-          //  }
+          
            
         }
     }

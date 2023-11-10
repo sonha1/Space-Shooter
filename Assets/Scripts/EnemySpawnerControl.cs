@@ -6,15 +6,18 @@ public class EnemySpawnerControl : MonoBehaviour
 {
 
     public GameObject EnemyGO;
-    public float maxSpawnRateInSeconds = 5f;
+    public float maxSpawnRateInSeconds;
+    public float numbers;
     public GameObject anEnemy;
     public GameObject Boss;
+
+    public static int health;
     // Start is called before the first frame update
     void Start()
     {
         Invoke("SpawnEnemy", maxSpawnRateInSeconds);
         //
-        InvokeRepeating("IncreaseSpawnRate", 0f,20f);
+        InvokeRepeating("IncreaseSpawnRate", 0f,15f);
     }
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class EnemySpawnerControl : MonoBehaviour
     public void ScheduleNextEnemySpawn()
     {
 
-        maxSpawnRateInSeconds = 5f;
+        maxSpawnRateInSeconds = numbers;
         
         float spawnInNSeconds;
         if (maxSpawnRateInSeconds > 1f)

@@ -31,6 +31,10 @@ public class PlayerControl : MonoBehaviour
     public Text textComponent;
     public int Map;
     public int nextMap;
+    public static int damage = 100;
+
+    // In Android
+    private Rigidbody rb;
 
     public void Init()
     {
@@ -45,7 +49,9 @@ public class PlayerControl : MonoBehaviour
         {
            
             scoreUITextGo = GameObject.FindGameObjectWithTag("TextScoreTag");
-    }
+
+        rb = GetComponent<Rigidbody>();
+         }
     
         // Update is called once per frame
         void Update()
@@ -54,7 +60,7 @@ public class PlayerControl : MonoBehaviour
             float y = Input.GetAxisRaw("Vertical");
     
             Vector2 direction = new Vector2(x, y).normalized;
-            Move(direction);
+           // Move(direction);
 
             // chuyển map
             GameObject bossShip = GameObject.Find("Boss");
@@ -72,9 +78,22 @@ public class PlayerControl : MonoBehaviour
            
             StartCoroutine(LoadAfterDelay());
             }
-        }
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    Vector2 touchDeltaPosition = touch.deltaPosition;
+                    Vector3 moveDirection = new Vector3(touchDeltaPosition.x, 0, touchDeltaPosition.y);
+                    rb.AddForce(moveDirection * speed);
+                }
+            }
     
-        void Move(Vector2 direction)
+        }
+
+            void Move(Vector2 direction)
         {
             Vector2 min = Camera.main.ViewportToWorldPoint (new Vector2 (0, 0));
             Vector2 max = Camera.main.ViewportToWorldPoint (new Vector2 (1, 1));
@@ -135,8 +154,11 @@ public class PlayerControl : MonoBehaviour
                      StartCoroutine(IncreaseFireRateForDuration(6f));
 
                 }
-                   
+                if ((col.tag == "Cannon"))
+                {
+                    StartCoroutine(IncreaseDamageRateForDuration(6f));
 
+                }
                 // Lưu điểm, mạng
                 PlayerPrefs.SetInt("lives", lives);
                 PlayerPrefs.SetInt("Score", oldScore);
@@ -151,8 +173,17 @@ public class PlayerControl : MonoBehaviour
             yield return new WaitForSeconds(duration);
             CancelInvoke("MakeFire");
             InvokeRepeating("MakeFire", 0f, 0.3f);
-    }
+         }
 
+    //Cannon
+    IEnumerator IncreaseDamageRateForDuration(float duration)
+    {
+        int damageNew = 300;
+        damage = damageNew;
+        // Đợi trong khoảng thời gian đã cho
+        yield return new WaitForSeconds(duration);
+        damage = 100;
+    }
 
     void PlayExplosion()
          {

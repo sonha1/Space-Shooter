@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyControl : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyControl : MonoBehaviour
     public GameObject ExplosionGO;
 
     public GameObject BossController;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +34,20 @@ public class EnemyControl : MonoBehaviour
     
      void OnTriggerEnter2D(Collider2D col)
     {
-        if ((col.tag == "PlayerShipTag") || (col.tag == "PlayerBulletTag"))
+        if ((col.tag == "PlayerBulletTag"))
+        {
+           //EnemySpawnerControl.health -= PlayerControl.damage;
+
+           // if (EnemySpawnerControl.health == 0)
+           // {
+                PlayExplosion();
+                scoreUITextGo.GetComponent<GameScore>().Score += 100;
+                Destroy(gameObject);
+            //}
+           
+        }
+
+        if(col.tag == "PlayerShipTag")
         {
             PlayExplosion();
             scoreUITextGo.GetComponent<GameScore>().Score += 100;
