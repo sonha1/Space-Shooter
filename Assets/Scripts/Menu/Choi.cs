@@ -19,7 +19,7 @@ public class Choi : MonoBehaviour
 
     public void CaiDat()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene("Setting");
     }
 
     public void OnQuitButtonClicked()

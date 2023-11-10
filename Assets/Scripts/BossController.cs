@@ -33,15 +33,4 @@ public class BossController : MonoBehaviour
         GameObject anEnemy = (GameObject)Instantiate((Boss2));
         anEnemy.transform.position = new Vector2(Random.Range(min.x, max.x), max.y);
     }
-
-    public void ScheduleActiveBoss(int i)
-    {
-        if (i == 1)
-        {
-            Invoke("SpawnBoss1", 3f);
-        } else if (i == 2)
-        {
-            Invoke("SpawnBoss2", 3f);
-        }
-    }
 }
